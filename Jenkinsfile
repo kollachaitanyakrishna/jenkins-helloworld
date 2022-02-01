@@ -13,7 +13,7 @@ pipeline {
         /* This stage builds the actual image; synonymous to
            docker build on the command line */
             steps {
-            sh "sudo docker build . -t customapp:1"
+            sh "sudo docker build . -t jenkincustomapp:1"
             }    
         }
         stage('Test image') {
@@ -27,9 +27,9 @@ pipeline {
          /* Final stage of build; Push the 
             docker image to our OCI private Registry*/
         steps {
-            sh "sudo docker login -u '<username>' -p '<ocir-token>' <region-prefix-name>"
-            sh "sudo docker tag customapp:1 <region-prefix-name>/<your-tenancy-namespace>/customapp:custom"
-            sh 'sudo docker push <region-prefix-name>/<your-tenancy-namespace>/customapp:custom'
+            sh "sudo docker login -u 'orasenatdpltintegration01/oracleidentitycloudservice/chaitanya.kolla@oracle.com' -p 'dmUS5TCn0Y3A.4lr)j9[' iad.ocir.io"
+            sh "sudo docker tag jenkincustomapp:1 iad.ocir.io/orasenatdpltintegration01/jenkincustomapp:custom"
+            sh 'sudo docker push iad.ocir.io/orasenatdpltintegration01/jenkincustomapp:custom'
             
            }
          } 
