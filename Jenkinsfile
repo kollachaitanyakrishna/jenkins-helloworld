@@ -27,7 +27,7 @@ pipeline {
          /* Final stage of build; Push the 
             docker image to our OCI private Registry*/
         steps {
-            sh "sudo docker login -u 'orasenatdpltintegration01/oracleidentitycloudservice/chaitanya.kolla@oracle.com' -p 'dmUS5TCn0Y3A.4lr)j9[' iad.ocir.io"
+            sh "sudo docker login -u 'orasenatdpltintegration01/oracleidentitycloudservice/chaitanya.kolla@oracle.com' -p '<password>' iad.ocir.io"
             sh "sudo docker tag jenkincustomapp:1 iad.ocir.io/orasenatdpltintegration01/jenkincustomapp:custom"
             sh 'sudo docker push iad.ocir.io/orasenatdpltintegration01/jenkincustomapp:custom'
             
